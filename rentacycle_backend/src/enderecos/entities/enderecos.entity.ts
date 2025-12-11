@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 import { Clientes } from '../../clientes/entities/clientes.entity';
 
-@Entity('tb_enderecos')
+@Entity({name:'tb_enderecos'})
 export class Enderecos {
   @PrimaryGeneratedColumn()
   id: number;
