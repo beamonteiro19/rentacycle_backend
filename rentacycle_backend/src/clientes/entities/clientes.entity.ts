@@ -9,8 +9,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Telefones } from '../../telefones/entities/telefones.entity';
-import { Enderecos } from '../../enderecos/enderecos.module';
 import { Aluguel } from '../../alugueis/entities/aluguel.entity';
+import { Enderecos } from '../../enderecos/entities/enderecos.entity';
 
 @Entity({ name: 'tb_clientes' })
 export class Clientes {
@@ -59,6 +59,7 @@ export class Clientes {
 
   @OneToMany(() => Aluguel, (aluguel) => aluguel.cliente)
   alugueis: Aluguel[];
+
 }
 
 // PENSAMENTO: Cliente → Aluguel → AluguelItem → Equipamento → Categoria

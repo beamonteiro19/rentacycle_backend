@@ -22,7 +22,10 @@ export class Aluguel {
   @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
   valor_total: number; // calculado no fechamento da notinha
 
-  @ManyToOne(() => Clientes, (cliente) => cliente.alugueis, { eager: true })
+  @ManyToOne(() => Clientes, (cliente) => cliente.alugueis, {
+    eager: true,
+    cascade: true,
+  })
   cliente: Clientes;
 
   @OneToMany(() => AluguelItem, (item) => item.aluguel, { cascade: true })

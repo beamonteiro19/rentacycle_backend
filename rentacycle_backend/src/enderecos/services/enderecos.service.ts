@@ -1,7 +1,8 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, DeleteResult } from 'typeorm';
-import { Enderecos } from '../enderecos.module';
+import { Enderecos } from '../entities/enderecos.entity';
+
 @Injectable()
 export class EnderecoService {
   constructor(
