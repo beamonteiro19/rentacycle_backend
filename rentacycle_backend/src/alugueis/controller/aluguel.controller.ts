@@ -35,6 +35,15 @@ export class AluguelController {
     return this.aluguelService.create(aluguel);
   }
 
+  @Post('/tempo/:id')
+  @HttpCode(HttpStatus.OK)
+  async calcularTempo(
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<{ horas: number }> {
+    const horas = await this.aluguelService.calcHours(id);
+    return { horas };
+  }
+
   @Put()
   @HttpCode(HttpStatus.OK)
   update(@Body() aluguel: Aluguel): Promise<Aluguel> {
