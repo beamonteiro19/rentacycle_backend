@@ -11,6 +11,7 @@ import {
 import { Telefones } from '../../telefones/entities/telefones.entity';
 import { Aluguel } from '../../alugueis/entities/aluguel.entity';
 import { Enderecos } from '../../enderecos/entities/enderecos.entity';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({ name: 'tb_clientes' })
 export class Clientes {
@@ -46,19 +47,25 @@ export class Clientes {
     enum: ['ativo', 'banido'],
     default: 'ativo',
   })
+  @ApiProperty()
   status: 'ativo' | 'banido';
 
   @Column({ type: 'text', nullable: true })
+  @ApiProperty()
   motivo_banimento: string;
 
   @Column({ type: 'datetime', nullable: true })
+  @ApiProperty()
   data_banimento: Date;
 
   @CreateDateColumn({ type: 'datetime' })
+  @ApiProperty()
   data_cadastro: Date;
 
   @OneToMany(() => Aluguel, (aluguel) => aluguel.cliente)
+  @ApiProperty({type: () => [Aluguel]})
   alugueis: Aluguel[];
+  
 
 }
 

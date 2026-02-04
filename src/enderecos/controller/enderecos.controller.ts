@@ -12,7 +12,9 @@ import {
 } from '@nestjs/common';
 import { EnderecoService } from '../services/enderecos.service';
 import { Enderecos } from '../entities/enderecos.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Endereços')
 @Controller('/enderecos')
 export class EnderecoController {
   constructor(private readonly enderecoService: EnderecoService) {}

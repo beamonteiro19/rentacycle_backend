@@ -12,7 +12,9 @@ import {
 } from '@nestjs/common';
 import { AluguelItemService } from '../services/alguel_item.service';
 import { AluguelItem } from '../entities/alguel_item.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Alugueis itens')
 @Controller('/aluguel-itens')
 export class AluguelItemController {
   constructor(private readonly aluguelItemService: AluguelItemService) {}

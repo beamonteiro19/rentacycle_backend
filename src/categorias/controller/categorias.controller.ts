@@ -12,7 +12,9 @@ import {
 } from '@nestjs/common';
 import { CategoriaService } from '../services/categorias.service';
 import { Categorias } from '../entities/categorias.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Categorias')
 @Controller('/categorias')
 export class CategoriaController {
   constructor(private readonly categoriaService: CategoriaService) {}

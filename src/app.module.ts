@@ -14,6 +14,7 @@ import { AluguelItemModule } from './aluguel_item/alguel_item.module';
 import { AluguelItem } from './aluguel_item/entities/alguel_item.entity';
 import { Aluguel } from './alugueis/entities/aluguel.entity';
 import { AluguelModule } from './alugueis/aluguel.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -37,7 +38,7 @@ import { AluguelModule } from './alugueis/aluguel.module';
     AluguelModule
   ],
 
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
