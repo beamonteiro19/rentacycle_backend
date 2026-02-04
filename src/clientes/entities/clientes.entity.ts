@@ -16,30 +16,36 @@ import { ApiProperty } from '@nestjs/swagger';
 @Entity({ name: 'tb_clientes' })
 export class Clientes {
   @PrimaryGeneratedColumn()
+  @ApiProperty()
   id: number;
 
   @IsNotEmpty()
   @Column({ length: 150 })
+  @ApiProperty()
   nome_completo: string;
 
   @IsNotEmpty()
   @Length(11, 14)
   @Matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, { message: 'CPF inválido' })
   @Column({ length: 14, unique: true })
+  @ApiProperty()
   cpf: string;
 
   @IsNotEmpty()
   @Column({ length: 20, unique: true })
+  @ApiProperty()
   rg: string;
 
   @OneToMany(() => Telefones, (telefone) => telefone.cliente, {
     cascade: true,
     eager: true,
   })
+  @ApiProperty({ type: () => [Telefones] })
   telefones: Telefones[];
 
   @OneToOne(() => Enderecos, { cascade: true, eager: true })
   @JoinColumn()
+  @ApiProperty({ type: () => Enderecos })
   endereco: Enderecos;
 
   @Column({
@@ -63,10 +69,8 @@ export class Clientes {
   data_cadastro: Date;
 
   @OneToMany(() => Aluguel, (aluguel) => aluguel.cliente)
-  @ApiProperty({type: () => [Aluguel]})
+  @ApiProperty({ type: () => [Aluguel] })
   alugueis: Aluguel[];
-  
-
 }
 
 // PENSAMENTO: Cliente → Aluguel → AluguelItem → Equipamento → Categoria
