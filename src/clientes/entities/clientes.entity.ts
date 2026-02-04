@@ -60,11 +60,11 @@ export class Clientes {
   @ApiProperty()
   motivo_banimento: string;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   @ApiProperty()
   data_banimento: Date;
 
-  @CreateDateColumn({ type: 'datetime' })
+  @CreateDateColumn({ type: 'timestamp' })
   @ApiProperty()
   data_cadastro: Date;
 
