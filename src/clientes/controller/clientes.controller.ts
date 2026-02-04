@@ -1,5 +1,5 @@
 import {
-    Body,
+  Body,
   Controller,
   Delete,
   Get,
@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { Clientes } from '../entities/clientes.entity';
 import { ClienteService } from '../services/clientes.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Clientes')
 @Controller('/clientes')
@@ -27,7 +27,9 @@ export class ClienteController {
 
   @Get('/:id')
   @HttpCode(HttpStatus.OK)
-  findById(@Param('id', ParseIntPipe) id_Cliente): Promise<Clientes> {
+  @ApiParam({ name: 'id', type: Number })
+  @ApiResponse({ status: 200, type: Clientes })
+  findById(@Param('id', ParseIntPipe) id_Cliente: number): Promise<Clientes> {
     return this.clienteService.findById(id_Cliente);
   }
 
